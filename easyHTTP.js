@@ -17,49 +17,41 @@ class easyHTTP {
      return resData; 
     }
     //Make http post request
-    post(url, data) {
-        return new Promise((resolve, reject) => {
-            fetch(url, {
+    async post(url, data) {
+        const response = await fetch(url, {
                     method: "POST",
                     headers: {
                         "Content-type": "application/json"
                     },
                     body: JSON.stringify(data)
                 })
-                .then(res => res.json())
-                .then(data => resolve(data))
-                .catch(err => reject(err));
-        });
+        const resData = await response.json();
+        return resData;        
     }
     //Make a http put request
-    put(url, data) {
-        return new Promise((resolve, reject) => {
-            fetch(url, {
+    async put(url, data) {
+        const response = await fetch(url, {
                     method: "PUT",
                     headers: {
                         "Content-type": "application/json"
                     },
                     body: JSON.stringify(data)
                 })
-                .then(res => res.json())
-                .then(data => resolve(data))
-                .catch(err => reject(err));
-        });
+                const resData = await response.json();
+                return resData; 
+        
     }
     //Make a delete request
 
-    delete(url) {
-        return new Promise((resolve, reject) => {
-            fetch(url, {
+    async delete(url) {
+        const response = await fetch(url, {
                     method: "DELETE",
                     headers: {
                         "Content-type": "application/json"
                     }
                 })
-                .then(res => res.json())
-                .then(data => resolve("Resource deleted!"))
-                .catch(err => reject(err));
-        });
+                const resData = await "Resource deleted";
+                return resData;
     }
 
 }
