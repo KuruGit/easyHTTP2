@@ -3,7 +3,7 @@
  * Library for HTTP requests
  * 
  * @author: David Breier
- * @version: 2.0.0
+ * @version: 3.0.0
  * @license: MIT
  * 
  ***********************************/
@@ -11,13 +11,10 @@
 class easyHTTP {
 
     //Make http get request
-    get(url) {
-        return new Promise((resolve, reject) => {
-            fetch(url)
-                .then(res => res.json())
-                .then(data => resolve(data))
-                .catch(err => reject(err));
-        });
+    async get(url) {
+     const response = await fetch(url);
+     const resData = await response.json();
+     return resData; 
     }
     //Make http post request
     post(url, data) {
